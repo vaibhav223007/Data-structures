@@ -38,6 +38,25 @@ class LinkedList:
             current = current.link
         print(current.info)
 
+    def delete_node(self, ele):
+        if self.head == None:
+            print("List is Empty")
+            return
+        elif self.head.info == ele:
+            temp = self.head
+            self.head = temp.link
+            temp = None
+            return
+        current = self.head
+        while current.link != None:
+            if current.link.info == ele:
+                temp = current.link
+                current.link = temp.link
+                temp = None
+                return
+            current = current.link
+        print("Element not found")
+
 
 LL = LinkedList()
 LL.insert_at_start(10)
@@ -46,4 +65,11 @@ LL.display()
 print("*********************************")
 LL.insert_at_last(20)
 LL.insert_at_last(30)
+LL.display()
+print("*********************************")
+LL.delete_node(40)
+LL.delete_node(20)
+LL.display()
+print("*********************************")
+LL.delete_node(30)
 LL.display()
